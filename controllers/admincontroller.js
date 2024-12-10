@@ -8,6 +8,11 @@ const multer = require('multer')   //multer is a package to handle file related 
 const path = require('path')
 const fs = require('fs')
 
+const demo = (request, response) => {
+  response.send("Welcome to the MERN SDP Backend API!");
+};
+
+
 const viewstudents = async (request, response) => {
   try {
     const students = await Student.find();
@@ -309,5 +314,6 @@ module.exports = {
   insertSection,
   viewsections,
   viewcoursefacultyallocation,
+  demo,
   
 };
