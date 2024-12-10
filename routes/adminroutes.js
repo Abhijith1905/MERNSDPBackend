@@ -4,6 +4,7 @@ const express = require("express")
 const adminrouter = express.Router()
 
 // admin routes
+adminrouter.get("/",admincontroller.demo)
 adminrouter.post("/checkadminlogin",admincontroller.checkadminlogin)
 adminrouter.post("/checkusername",admincontroller.checkusername)
 adminrouter.post("/resetadminpassword",admincontroller.resetadminpassword)
@@ -21,5 +22,5 @@ adminrouter.post("/allocatecourse",admincontroller.allocateFacultyToCourse)
 adminrouter.post("/insertSection",admincontroller.insertSection)
 adminrouter.get("/viewsections",admincontroller.viewsections)   
 adminrouter.get("/viewcoursefacultyallocation",admincontroller.viewcoursefacultyallocation)
-adminrouter.post('/')
+
 module.exports = adminrouter
