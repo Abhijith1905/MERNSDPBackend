@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 require('dotenv').config();
 
-const dburl =  process.env.CUSTOMCONNSTR_DefaultConnection || process.env.MONGODB_URL || process.env.mongodburl;
+const dburl =  process.env.AZURE_COSMOS_CONNECTIONSTRING || process.env.mongodburl;
 
 mongoose.connect(dburl).then(() => {
     console.log("Connected to DB Successfully")
