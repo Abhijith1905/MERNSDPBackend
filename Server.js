@@ -3,30 +3,27 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 require('dotenv').config();
 
-const dburl = process.env.mongodburl
+const dburl = process.env.MONGODB_URL || process.env.mongodburl;
+
 mongoose.connect(dburl).then(() => {
     console.log("Connected to DB Successfully")
 }).catch((err) => {
     console.log(err.message)
 });
 
-
 const app = express()
-app.use(express.json()) // to parse JSON data
+app.use(express.json())
 app.use(cors())
 
 const adminrouter = require("./routes/adminroutes")
-app.use("",adminrouter) // admin routes
-
 const facultyrouter = require("./routes/facultyroutes")
-app.use("",facultyrouter) // faculty routes
-
 const studentrouter = require("./routes/studentroutes")
-app.use("",studentrouter) // student routes
 
+app.use("", adminrouter)
+app.use("", facultyrouter)
+app.use("", studentrouter)
 
-
-const port = 2000
-app.listen(port,()=>{
+const port = process.env.PORT || 2000;
+app.listen(port, () => {
     console.log(`Server is running at port ${port}`)
 })
